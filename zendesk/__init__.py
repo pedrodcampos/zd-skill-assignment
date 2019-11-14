@@ -4,8 +4,10 @@ import time
 
 class ZendeskClient():
     def __init__(self):
+        config = json.load(open("config.json"))
         self.__request = requests.Session()
-        self.__request.auth = self.__auth
+        self.url = config.get("url",None)
+        self.__request.auth = (config.get("user",None), config.get("password",None))
     
     def get(self,endpoint, **kwargs):
         response = None
