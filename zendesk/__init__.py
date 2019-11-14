@@ -19,3 +19,6 @@ class ZendeskClient():
                 response = None
                 continue
         return response.json()
+
+    def post(self, endpoint, **kwargs):
+        return self.__request.post(self.url+endpoint, **kwargs)
